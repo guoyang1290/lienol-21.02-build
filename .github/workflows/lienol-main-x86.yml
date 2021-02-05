@@ -116,11 +116,23 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
+    - name: Upload passwall-packages
+      uses: actions/upload-artifact@v2
+      with:
+        name: passwall-packages
+        path: openwrt/bin/packages/i386_pentium4/diy1
+
+    - name: Upload packages
+      uses: actions/upload-artifact@v2
+      with:
+        name: main-x86-packages
+        path: openwrt/bin/packages
+
     - name: Upload bin directory
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
-        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: lienol-main-x86${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
 
     - name: Organize files
@@ -136,7 +148,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: lienol-main-x86-firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: Upload firmware to cowtransfer
