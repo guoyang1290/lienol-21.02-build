@@ -23,7 +23,7 @@ on:
   watch:
     types: started
 env:
-  REPO_URL: https://github.com/treisrunut/lienol-openwrt
+  REPO_URL: https://github.com/Lienol/openwrt
   REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: lienol-main-x86.config
