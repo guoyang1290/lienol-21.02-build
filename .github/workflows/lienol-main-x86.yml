@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: lienol-main-x86
+name: lienol-21.02-x86
 
 on:
   repository_dispatch:
@@ -24,7 +24,7 @@ on:
     types: started
 env:
   REPO_URL: https://github.com/Lienol/openwrt
-  REPO_BRANCH: main
+  REPO_BRANCH: 21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: lienol-main-x86.config
   DIY_P1_SH: diy-part1.sh
@@ -125,14 +125,14 @@ jobs:
     - name: Upload packages
       uses: actions/upload-artifact@v2
       with:
-        name: main-x86-packages
+        name: 21.02-x86-packages
         path: openwrt/bin/packages
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
-        name: lienol-main-x86${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: lienol-21.02-x86${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
 
     - name: Organize files
@@ -148,7 +148,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: lienol-main-x86-firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: lienol-21.02-x86-firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: Upload firmware to cowtransfer
