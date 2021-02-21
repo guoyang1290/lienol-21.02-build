@@ -119,13 +119,13 @@ jobs:
     - name: Upload passwall-packages
       uses: actions/upload-artifact@v2
       with:
-        name: 21.02-passwall
+        name: lienol-21.02-x86-passwall${{ env.FILE_DATE }}
         path: openwrt/bin/packages/i386_pentium4/diy1
 
     - name: Upload packages
       uses: actions/upload-artifact@v2
       with:
-        name: 21.02-x86-packages
+        name: lienol-21.02-x86-packages${{ env.FILE_DATE }}
         path: openwrt/bin/packages
 
     - name: Upload bin directory
