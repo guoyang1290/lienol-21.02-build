@@ -26,7 +26,7 @@ env:
   REPO_URL: https://github.com/Lienol/openwrt
   REPO_BRANCH: 21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: lienol-main-x86-64.config
+  CONFIG_FILE: lienol-21.02-x86-64.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
@@ -119,7 +119,7 @@ jobs:
     - name: Upload passwall-packages
       uses: actions/upload-artifact@v2
       with:
-        name: passwall-packages
+        name: 21.02-passwall
         path: openwrt/bin/packages/x86_64/diy1
 
     - name: Upload packages
